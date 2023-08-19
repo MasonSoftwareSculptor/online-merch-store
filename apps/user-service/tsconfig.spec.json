@@ -3,7 +3,14 @@
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
     "module": "commonjs",
-    "types": ["jest", "node"]
+    "types": ["jest", "node"],
+    "rootDir": ".",
+    "baseUrl": ".",
+    "paths": {
+      "@controllers/*": ["src/controllers/*"],
+      "@domains/*": ["src/domains/*"],
+      "@infrastructures/*": ["src/infrastructures/*"]
+    }
   },
   "include": [
     "jest.config.ts",

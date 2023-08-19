@@ -1,6 +1,6 @@
 import { Test } from '@nestjs/testing';
-import { UpdateUserService } from '../services/update-user.service';
-import { UpdateUserUseCase } from '../use-cases/update-user.usecase';
+import { UpdateUserService } from '@domains/user/services';
+import { UpdateUserUseCase } from '@domains/user/use-cases';
 
 describe('UpdateUserService', () => {
   let service: UpdateUserService;

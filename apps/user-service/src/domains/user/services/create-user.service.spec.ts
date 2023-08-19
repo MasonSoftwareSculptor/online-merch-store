@@ -1,6 +1,6 @@
 import { Test } from '@nestjs/testing';
-import { CreateUserService } from '../services/create-user.service';
-import { CreateUserUseCase } from '../use-cases/create-user.usecase';
+import { CreateUserService } from '@domains/user/services';
+import { CreateUserUseCase } from '@domains/user/use-cases';
 
 describe('CreateUserService', () => {
   let service: CreateUserService;

@@ -1,7 +1,6 @@
 import { Controller, Get, Post } from '@nestjs/common';
 
-import { CreateUserUseCase } from '../domains/user/use-cases/create-user.usecase';
-import { UpdateUserUseCase } from '../domains/user/use-cases/update-user.usecase';
+import { CreateUserUseCase, UpdateUserUseCase } from '@domains/user/use-cases';
 
 @Controller('users')
 export class UserController {

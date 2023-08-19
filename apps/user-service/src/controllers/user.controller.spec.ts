@@ -1,10 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
 
 import { UserController } from './user.controller';
-import { CreateUserService } from '../domains/user/services/create-user.service';
-import { CreateUserUseCase } from '../domains/user/use-cases/create-user.usecase';
-import { UpdateUserUseCase } from '../domains/user/use-cases/update-user.usecase';
-import { UpdateUserService } from '../domains/user/services/update-user.service';
+import { CreateUserUseCase, UpdateUserUseCase } from '@domains/user/use-cases';
+import { CreateUserService, UpdateUserService } from '@domains/user/services';
 
 describe('UserController', () => {
   let app: TestingModule;
