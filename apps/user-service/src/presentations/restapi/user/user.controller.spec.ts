@@ -1,8 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
-
-import { UserController } from './user.controller';
+import { UserController } from '@restapi/user/user.controller';
 import { CreateUserUseCase, UpdateUserUseCase } from '@domains/user/use-cases';
 import { CreateUserService, UpdateUserService } from '@domains/user/services';
+import { CreateUserDto } from '@restapi/user/dtos';
 
 describe('UserController', () => {
   let app: TestingModule;
@@ -22,7 +22,19 @@ describe('UserController', () => {
 
   describe('create', () => {
     it('should be throw "Method not implemented."', async () => {
-      await expect(() => controller.create({})).rejects.toThrow(
+      // Arrange
+      const payload: CreateUserDto = {
+        username: 'tuancv',
+        email: 'tuancv.dev@gmail.com',
+        password: '12345678',
+        firstName: 'Tuan',
+        lastName: 'Can',
+      };
+
+      // Act
+
+      // Assert
+      await expect(() => controller.create(payload)).rejects.toThrow(
         'Method not implemented.'
       );
     });

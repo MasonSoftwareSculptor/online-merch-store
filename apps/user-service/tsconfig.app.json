@@ -9,7 +9,7 @@
     "rootDir": ".",
     "baseUrl": ".",
     "paths": {
-      "@controllers/*": ["src/controllers/*"],
+      "@restapi/*": ["src/presentations/restapi/*"],
       "@domains/*": ["src/domains/*"],
       "@infrastructures/*": ["src/infrastructures/*"]
     }

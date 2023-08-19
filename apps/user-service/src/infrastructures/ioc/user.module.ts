@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { UserController } from './controllers/user.controller';
+import { UserController } from '@restapi/user/user.controller';
 import { CreateUserService, UpdateUserService } from '@domains/user/services';
 import { CreateUserUseCase, UpdateUserUseCase } from '@domains/user/use-cases';
 
