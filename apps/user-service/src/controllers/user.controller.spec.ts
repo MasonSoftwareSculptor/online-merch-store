@@ -21,14 +21,16 @@ describe('UserController', () => {
   });
 
   describe('create', () => {
-    it('should be throw "Method not implemented."', () => {
-      expect(() => controller.create()).toThrow('Method not implemented.');
+    it('should be throw "Method not implemented."', async () => {
+      await expect(() => controller.create({})).rejects.toThrow(
+        'Method not implemented.'
+      );
     });
   });
 
   describe('update', () => {
     it('should be throw "Method not implemented."', () => {
-      expect(() => controller.update()).toThrow('Method not implemented.');
+      expect(() => controller.update({})).toThrow('Method not implemented.');
     });
   });
 });

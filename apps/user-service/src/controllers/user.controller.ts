@@ -1,4 +1,4 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Controller, Post, Body, Patch } from '@nestjs/common';
 
 import { CreateUserUseCase, UpdateUserUseCase } from '@domains/user/use-cases';
 
@@ -9,13 +9,13 @@ export class UserController {
     private updateUserService: UpdateUserUseCase
   ) {}
 
-  @Get()
-  create() {
-    return this.createUserService.execute();
+  @Post()
+  create(@Body() payload: any) {
+    return this.createUserService.execute(payload);
   }
 
-  @Post()
-  update() {
-    return this.updateUserService.execute();
+  @Patch(':id')
+  update(@Body() payload: any) {
+    return this.updateUserService.execute(payload);
   }
 }

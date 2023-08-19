@@ -15,7 +15,7 @@ describe('UpdateUserService', () => {
 
   describe('execute', () => {
     it('should be throw "Method not implemented."', () => {
-      expect(() => service.execute()).toThrow('Method not implemented.');
+      expect(() => service.execute({})).toThrow('Method not implemented.');
     });
   });
 });
