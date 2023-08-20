@@ -40,7 +40,7 @@ describe('UserController', () => {
       expect(results.password).not.toBe(payload.password);
       expect(results).toEqual({
         ...payload,
-        password: expect.anything(),
+        password: expect.not.stringMatching(payload.password),
       });
     });
   });
