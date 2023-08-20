@@ -11,7 +11,8 @@
     "paths": {
       "@restapi/*": ["src/presentations/restapi/*"],
       "@domains/*": ["src/domains/*"],
-      "@infrastructures/*": ["src/infrastructures/*"]
+      "@infrastructures/*": ["src/infrastructures/*"],
+      "@online-merch-store/libs/*": ["../../libs/*"]
     }
   },
   "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"],
