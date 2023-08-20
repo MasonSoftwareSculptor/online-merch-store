@@ -3,6 +3,7 @@ import { UserController } from '@restapi/user/user.controller';
 import { CreateUserUseCase, UpdateUserUseCase } from '@domains/user/use-cases';
 import { CreateUserService, UpdateUserService } from '@domains/user/services';
 import { CreateUserDto } from '@restapi/user/dtos';
+import { NestUtilModule } from '@online-merch-store/libs/nest/src';
 
 describe('UserController', () => {
   let app: TestingModule;
@@ -10,6 +11,7 @@ describe('UserController', () => {
 
   beforeAll(async () => {
     app = await Test.createTestingModule({
+      imports: [NestUtilModule],
       controllers: [UserController],
       providers: [
         { useClass: CreateUserService, provide: CreateUserUseCase },
@@ -32,11 +34,14 @@ describe('UserController', () => {
       };
 
       // Act
+      const results = await controller.create(payload);
 
       // Assert
-      await expect(() => controller.create(payload)).rejects.toThrow(
-        'Method not implemented.'
-      );
+      expect(results.password).not.toBe(payload.password);
+      expect(results).toEqual({
+        ...payload,
+        password: expect.anything(),
+      });
     });
   });
 

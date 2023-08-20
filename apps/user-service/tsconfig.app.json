@@ -6,7 +6,6 @@
     "types": ["node"],
     "emitDecoratorMetadata": true,
     "target": "es2021",
-    "rootDir": ".",
     "baseUrl": ".",
     "paths": {
       "@restapi/*": ["src/presentations/restapi/*"],

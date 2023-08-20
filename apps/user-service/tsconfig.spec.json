@@ -4,12 +4,12 @@
     "outDir": "../../dist/out-tsc",
     "module": "commonjs",
     "types": ["jest", "node"],
-    "rootDir": ".",
     "baseUrl": ".",
     "paths": {
       "@restapi/*": ["src/presentations/restapi/*"],
       "@domains/*": ["src/domains/*"],
-      "@infrastructures/*": ["src/infrastructures/*"]
+      "@infrastructures/*": ["src/infrastructures/*"],
+      "@online-merch-store/libs/*": ["../../libs/*"]
     }
   },
   "include": [
