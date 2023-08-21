@@ -15,8 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@online-merch-store/libs/*": ["libs/*"],
-      "@online-merch-store/apps/*": ["apps/*"]
+      "@online-merch-store/apps/*": ["apps/*"],
+      "@online-merch-store/libs/*": ["libs/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]

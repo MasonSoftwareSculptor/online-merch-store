@@ -57,6 +57,10 @@
           "codeCoverage": true
         }
       }
+    },
+    "docker-build": {
+      "dependsOn": ["build"],
+      "command": "docker build -f apps/user-service/Dockerfile . -t user-service"
     }
   },
   "tags": []
