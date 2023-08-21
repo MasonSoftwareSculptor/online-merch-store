@@ -4,18 +4,22 @@ import { CreateUserUseCase, UpdateUserUseCase } from '@domains/user/use-cases';
 import { CreateUserService, UpdateUserService } from '@domains/user/services';
 import { CreateUserDto } from '@restapi/user/dtos';
 import { NestUtilModule } from '@online-merch-store/libs/nest/src';
+import { UserRepository } from '@domains/user/repositories/user.repository';
+import { users, createUserPayload } from '@mocks/users';
 
 describe('UserController', () => {
   let app: TestingModule;
   let controller: UserController;
+  const userRepository = { create: async () => users[0] };
 
   beforeAll(async () => {
     app = await Test.createTestingModule({
       imports: [NestUtilModule],
       controllers: [UserController],
       providers: [
-        { useClass: CreateUserService, provide: CreateUserUseCase },
-        { useClass: UpdateUserService, provide: UpdateUserUseCase },
+        { provide: CreateUserUseCase, useClass: CreateUserService },
+        { provide: UpdateUserUseCase, useClass: UpdateUserService },
+        { provide: UserRepository, useValue: userRepository },
       ],
     }).compile();
 
@@ -23,25 +27,15 @@ describe('UserController', () => {
   });
 
   describe('create', () => {
-    it('should be throw "Method not implemented."', async () => {
+    it('should return an user entity', async () => {
       // Arrange
-      const payload: CreateUserDto = {
-        username: 'tuancv',
-        email: 'tuancv.dev@gmail.com',
-        password: '12345678',
-        firstName: 'Tuan',
-        lastName: 'Can',
-      };
+      const userPayload = <CreateUserDto>createUserPayload;
 
       // Act
-      const results = await controller.create(payload);
+      const results = await controller.create(userPayload);
 
       // Assert
-      expect(results.password).not.toBe(payload.password);
-      expect(results).toEqual({
-        ...payload,
-        password: expect.not.stringMatching(payload.password),
-      });
+      expect(results).toEqual(users[0]);
     });
   });
 

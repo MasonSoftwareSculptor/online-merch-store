@@ -5,3 +5,11 @@ export interface CreateUserInterface {
   firstName: string;
   lastName: string;
 }
+
+export interface IUserResp {
+  id: string;
+  username: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+}
