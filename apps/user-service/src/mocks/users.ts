@@ -40,4 +40,5 @@ export const updateUserEntityPayload = {
 
 export const updateUserPayload = {
   firstName: 'Mason',
+  password: '123456',
 };
