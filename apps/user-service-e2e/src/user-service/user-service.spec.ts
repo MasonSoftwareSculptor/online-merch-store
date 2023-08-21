@@ -9,12 +9,14 @@ describe('POST /api/users', () => {
       firstName: 'Tuan',
       lastName: 'Can',
     };
+    const expectedResult = {
+      ...payload,
+      password: undefined,
+      id: '1',
+    };
     const res = await axios.post(`/api/users`, payload);
 
     expect(res.status).toBe(201);
-    expect(res.data).toEqual({
-      ...payload,
-      password: expect.not.stringMatching(payload.password),
-    });
+    expect(res.data).toEqual(expectedResult);
   });
 });
