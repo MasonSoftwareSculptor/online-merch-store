@@ -1,0 +1,22 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../dist/out-tsc",
+    "module": "commonjs",
+    "types": ["jest", "node"],
+    "baseUrl": ".",
+    "paths": {
+      "@restapi/*": ["src/presentations/restapi/*"],
+      "@domains/*": ["src/domains/*"],
+      "@infrastructures/*": ["src/infrastructures/*"],
+      "@mocks/*": ["src/mocks/*"],
+      "@online-merch-store/libs/*": ["../../libs/*"]
+    }
+  },
+  "include": [
+    "jest.config.ts",
+    "src/**/*.test.ts",
+    "src/**/*.spec.ts",
+    "src/**/*.d.ts"
+  ]
+}

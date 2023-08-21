@@ -1,0 +1,20 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../dist/out-tsc",
+    "module": "commonjs",
+    "types": ["node"],
+    "emitDecoratorMetadata": true,
+    "target": "es2021",
+    "baseUrl": ".",
+    "paths": {
+      "@restapi/*": ["src/presentations/restapi/*"],
+      "@domains/*": ["src/domains/*"],
+      "@infrastructures/*": ["src/infrastructures/*"],
+      "@mocks/*": ["src/mocks/*"],
+      "@online-merch-store/libs/*": ["../../libs/*"]
+    }
+  },
+  "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"],
+  "include": ["src/**/*.ts"]
+}
