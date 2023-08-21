@@ -5,12 +5,17 @@ import { CreateUserService, UpdateUserService } from '@domains/user/services';
 import { CreateUserDto } from '@restapi/user/dtos';
 import { NestUtilModule } from '@online-merch-store/libs/nest/src';
 import { UserRepository } from '@domains/user/repositories/user.repository';
-import { users, createUserPayload } from '@mocks/users';
+import {
+  users,
+  createUserPayload,
+  UserRepositoryImplMock,
+  updateUserPayload,
+} from '@mocks/index';
+import { UserEntity } from '@domains/user/entities/user.entity';
 
 describe('UserController', () => {
   let app: TestingModule;
   let controller: UserController;
-  const userRepository = { create: async () => users[0] };
 
   beforeAll(async () => {
     app = await Test.createTestingModule({
@@ -19,7 +24,7 @@ describe('UserController', () => {
       providers: [
         { provide: CreateUserUseCase, useClass: CreateUserService },
         { provide: UpdateUserUseCase, useClass: UpdateUserService },
-        { provide: UserRepository, useValue: userRepository },
+        { provide: UserRepository, useClass: UserRepositoryImplMock },
       ],
     }).compile();
 
@@ -30,18 +35,31 @@ describe('UserController', () => {
     it('should return an user entity', async () => {
       // Arrange
       const userPayload = <CreateUserDto>createUserPayload;
+      const expectedResult: UserEntity = users.find(
+        (user) => user.email === userPayload.email
+      );
 
       // Act
       const results = await controller.create(userPayload);
 
       // Assert
-      expect(results).toEqual(users[0]);
+      expect(results).toEqual(expectedResult);
     });
   });
 
   describe('update', () => {
-    it('should be throw "Method not implemented."', () => {
-      expect(() => controller.update({})).toThrow('Method not implemented.');
+    it('should be throw "Method not implemented."', async () => {
+      // Arrange
+      const userPayload = <CreateUserDto>updateUserPayload;
+      const expectedResult: UserEntity = users.find(
+        (user) => user.id === users[0].id
+      );
+
+      // Act
+      const results = await controller.update(users[0].id, userPayload);
+
+      // Assert
+      expect(results).toEqual(expectedResult);
     });
   });
 });

@@ -11,6 +11,7 @@
       "@restapi/*": ["src/presentations/restapi/*"],
       "@domains/*": ["src/domains/*"],
       "@infrastructures/*": ["src/infrastructures/*"],
+      "@mocks/*": ["src/mocks/*"],
       "@online-merch-store/libs/*": ["../../libs/*"]
     }
   },

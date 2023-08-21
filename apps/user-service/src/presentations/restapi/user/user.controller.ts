@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Patch } from '@nestjs/common';
+import { Controller, Post, Body, Patch, Param } from '@nestjs/common';
 import { plainToInstance } from 'class-transformer';
 import { CreateUserUseCase, UpdateUserUseCase } from '@domains/user/use-cases';
 import { CreateUserDto, UpdateUserDto } from '@restapi/user/dtos';
@@ -31,7 +31,16 @@ export class UserController {
   }
 
   @Patch(':id')
-  update(@Body() payload: UpdateUserDto) {
-    return this.updateUserService.execute(payload);
+  async update(@Param('id') id: string, @Body() payload: UpdateUserDto) {
+    if (payload.password) {
+      payload.password = await this.bcryptUtil.hash(payload.password);
+    }
+    const userEntityPayload: UserEntity = plainToInstance(UserEntity, payload);
+    userEntityPayload.id = id;
+    const userUpdated: UserEntity = new UserEntity(
+      await this.updateUserService.execute(userEntityPayload)
+    );
+
+    return userUpdated;
   }
 }

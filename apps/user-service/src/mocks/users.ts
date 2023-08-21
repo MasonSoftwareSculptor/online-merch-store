@@ -34,6 +34,7 @@ export const createUserPayload = {
 };
 
 export const updateUserEntityPayload = {
+  id: 'uuid1',
   first_name: 'Mason',
 };
 
