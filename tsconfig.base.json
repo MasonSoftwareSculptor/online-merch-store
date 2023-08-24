@@ -18,6 +18,9 @@
       "@online-merch-store/apps/*": ["apps/*"],
       "@online-merch-store/libs/*": ["libs/*"],
       "@online-merch-store/prisma-client": ["libs/prisma-client/src/index.ts"],
+      "@online-merch-store/prisma-data-access/data-access-users": [
+        "libs/prisma-data-access/data-access-users/src/index.ts"
+      ],
       "@online-merch-store/prisma-schema": ["libs/prisma-schema/src/index.ts"]
     }
   },
