@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@online-merch-store/apps/*": ["apps/*"],
-      "@online-merch-store/libs/*": ["libs/*"]
+      "@online-merch-store/libs/*": ["libs/*"],
+      "@online-merch-store/prisma-schema": ["libs/prisma-schema/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
