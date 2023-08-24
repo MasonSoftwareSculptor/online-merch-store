@@ -1,0 +1,34 @@
+{
+  "name": "prisma-schema",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/prisma-schema/src",
+  "projectType": "library",
+  "targets": {
+    "prisma": {
+      "command": "prisma init",
+      "options": {
+        "cwd": "libs/prisma-schema"
+      }
+    },
+    "generate-types": {
+      "command": "prisma generate",
+      "options": {
+        "cwd": "libs/prisma-schema"
+      }
+    },
+    "migrate": {
+      "command": "prisma migrate dev",
+      "options": {
+        "cwd": "libs/prisma-schema"
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/prisma-schema/**/*.ts"]
+      }
+    }
+  },
+  "tags": []
+}
