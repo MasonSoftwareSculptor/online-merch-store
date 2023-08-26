@@ -5,7 +5,7 @@ import { Prisma, PrismaService, User } from '@online-merch-store/prisma-client';
 export class UserService {
   constructor(private prisma: PrismaService) {}
 
-  async user(
+  async findByUniqueKey(
     userWhereUniqueInput: Prisma.UserWhereUniqueInput
   ): Promise<User | null> {
     return this.prisma.user.findUnique({
@@ -13,7 +13,7 @@ export class UserService {
     });
   }
 
-  async users(options: {
+  async findAll(options: {
     skip?: number;
     take?: number;
     cursor?: Prisma.UserWhereUniqueInput;
@@ -31,13 +31,13 @@ export class UserService {
     });
   }
 
-  async createUser(data: Prisma.UserCreateInput): Promise<User> {
+  async create(data: Prisma.UserCreateInput): Promise<User> {
     return this.prisma.user.create({
       data,
     });
   }
 
-  async updateUser(options: {
+  async update(options: {
     where: Prisma.UserWhereUniqueInput;
     data: Prisma.UserUpdateInput;
   }): Promise<User> {
@@ -48,7 +48,7 @@ export class UserService {
     });
   }
 
-  async deleteUser(where: Prisma.UserWhereUniqueInput): Promise<User> {
+  async delete(where: Prisma.UserWhereUniqueInput): Promise<User> {
     return this.prisma.user.delete({
       where,
     });

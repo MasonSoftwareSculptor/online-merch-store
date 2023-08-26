@@ -1,6 +1,10 @@
-import { Controller, Post, Body, Patch, Param } from '@nestjs/common';
+import { Controller, Post, Body, Patch, Param, Get } from '@nestjs/common';
 import { plainToInstance } from 'class-transformer';
-import { CreateUserUseCase, UpdateUserUseCase } from '@domains/user/use-cases';
+import {
+  CreateUserUseCase,
+  FindAllUserUseCase,
+  UpdateUserUseCase,
+} from '@domains/user/use-cases';
 import { CreateUserDto, UpdateUserDto } from '@restapi/user/dtos';
 import { UserEntity } from '@domains/user/entities/user.entity';
 import { BcryptUtil } from '@online-merch-store/libs/nest/src';
@@ -10,6 +14,7 @@ export class UserController {
   constructor(
     private createUserService: CreateUserUseCase,
     private updateUserService: UpdateUserUseCase,
+    private findAllUserService: FindAllUserUseCase,
     private bcryptUtil: BcryptUtil
   ) {}
 
@@ -28,6 +33,13 @@ export class UserController {
     );
 
     return userCreated;
+  }
+
+  @Get()
+  async findAll() {
+    return (await this.findAllUserService.execute()).map(
+      (user) => new UserEntity(user)
+    );
   }
 
   @Patch(':id')

@@ -1,4 +1,4 @@
-import { Exclude, Expose } from 'class-transformer';
+import { Exclude } from 'class-transformer';
 
 export class UserEntity {
   @Exclude({ toClassOnly: true })
@@ -8,12 +8,14 @@ export class UserEntity {
 
   @Exclude({ toPlainOnly: true })
   password: string;
+  firstName: string;
+  lastName: string;
 
-  @Expose({ name: 'firstName', toPlainOnly: true })
-  first_name: string;
+  @Exclude({ toClassOnly: true })
+  createdAt: Date;
 
-  @Expose({ name: 'lastName', toPlainOnly: true })
-  last_name: string;
+  @Exclude({ toClassOnly: true })
+  updatedAt: Date;
 
   constructor(partial: Partial<UserEntity>) {
     Object.assign(this, partial);
