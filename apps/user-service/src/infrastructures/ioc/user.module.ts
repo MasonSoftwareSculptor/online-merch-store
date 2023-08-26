@@ -5,9 +5,10 @@ import { CreateUserUseCase, UpdateUserUseCase } from '@domains/user/use-cases';
 import { NestUtilModule } from '@online-merch-store/libs/nest/src';
 import { UserRepository } from '@domains/user/repositories/user.repository';
 import { UserRepositoryImpl } from '@infrastructures/databases/mysql/user.repository';
+import { DataAccessUsersModule } from '@online-merch-store/prisma-data-access/data-access-users';
 
 @Module({
-  imports: [NestUtilModule],
+  imports: [NestUtilModule, DataAccessUsersModule],
   controllers: [UserController],
   providers: [
     { useClass: CreateUserService, provide: CreateUserUseCase },
