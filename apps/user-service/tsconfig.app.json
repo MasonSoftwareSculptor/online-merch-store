@@ -12,7 +12,9 @@
       "@domains/*": ["src/domains/*"],
       "@infrastructures/*": ["src/infrastructures/*"],
       "@mocks/*": ["src/mocks/*"],
-      "@online-merch-store/libs/*": ["../../libs/*"]
+      "@online-merch-store/libs/*": ["../../libs/*"],
+      "@online-merch-store/prisma-data-access/data-access-users": ["../../libs/prisma-data-access/data-access-users/src/index.ts"],
+      "@online-merch-store/prisma-client": ["../../libs/prisma-client/src/index.ts"]
     }
   },
   "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"],
